@@ -5,22 +5,21 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { motion, AnimatePresence } from "framer-motion";
-import { projects } from "@/src/data/projects";
+import { projects } from "../../../data/projects";
 import Image from "next/image";
-
 import {
   FaArrowLeft,
-  FaGithub,
-  FaExternalLinkAlt,
-  FaRegCalendar,
-  FaCode,
-  FaRegCheckCircle,
-  FaClock,
-  FaTimes,
   FaChevronLeft,
   FaChevronRight,
-  FaStar,
+  FaClock,
+  FaCode,
+  FaExternalLinkAlt,
+  FaGithub,
+  FaRegCalendar,
+  FaRegCheckCircle,
   FaRocket,
+  FaStar,
+  FaTimes,
 } from "react-icons/fa";
 
 export default function ProjectDetailPage() {
