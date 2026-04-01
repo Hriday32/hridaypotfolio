@@ -1,3 +1,5 @@
+"use client";
+
 import HeroSection from "../components/hero/HeroSection";
 import ProjectsSection from "./projects/ProjectsSection";
 import SkillShowcase from "../components/skillShowcase/SkillShowcase";
