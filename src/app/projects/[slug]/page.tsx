@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { motion, AnimatePresence } from "framer-motion";
-import { projects } from "@/data/projects";
+import { projects } from "@/src/data/projects";
 import Image from "next/image";
 
 import {
@@ -83,7 +83,7 @@ export default function ProjectDetailPage() {
   const goToPrev = () => {
     if (selectedImage !== null) {
       setSelectedImage(
-        (selectedImage - 1 + project.images.length) % project.images.length
+        (selectedImage - 1 + project.images.length) % project.images.length,
       );
     }
   };
