@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, ArrowUp, Calendar } from "lucide-react";
-import { navLinks } from "@/src/data/navLinks";
+import { navLinks } from "../../data/navLinks";
 import { Icon } from "@iconify/react/offline";
 
 interface FooterProps {

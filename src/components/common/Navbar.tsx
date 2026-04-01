@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import { navLinks } from "@/src/data/navLinks";
+import { navLinks } from "../../data/navLinks";
 import ThemeSwitch from "./ThemeSwitch";
 import { motion, AnimatePresence } from "framer-motion";
 
