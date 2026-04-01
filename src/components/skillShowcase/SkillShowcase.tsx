@@ -37,8 +37,10 @@ export default function SkillShowcase({ skills }: SkillShowcaseProps) {
     // Generate non-overlapping random positions
     const generateRandomPositions = () => {
       const positions: Position[] = [];
-      const screenWidth = typeof window !== "undefined" ? window.innerWidth : 1200;
-      const screenHeight = typeof window !== "undefined" ? window.innerHeight : 800;
+      const screenWidth =
+        typeof window !== "undefined" ? window.innerWidth : 1200;
+      const screenHeight =
+        typeof window !== "undefined" ? window.innerHeight : 800;
 
       for (let i = 0; i < skills.length; i++) {
         let position: Position;
@@ -54,7 +56,7 @@ export default function SkillShowcase({ skills }: SkillShowcaseProps) {
           validPosition = positions.every((existingPos) => {
             const distance = Math.sqrt(
               Math.pow(position.x - existingPos.x, 2) +
-              Math.pow(position.y - existingPos.y, 2)
+                Math.pow(position.y - existingPos.y, 2),
             );
             return distance > 150;
           });
@@ -88,7 +90,6 @@ export default function SkillShowcase({ skills }: SkillShowcaseProps) {
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [skills.length]);
-
 
   if (!mounted) return null;
 
@@ -134,10 +135,10 @@ export default function SkillShowcase({ skills }: SkillShowcaseProps) {
           transition={{
             type: "spring",
             stiffness: isCursorInSection ? 30 : 50,
-            damping: 20
+            damping: 20,
           }}
         >
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px]" />
 
           {/* Animated gradient overlay on hover */}
           <motion.div
@@ -146,6 +147,10 @@ export default function SkillShowcase({ skills }: SkillShowcaseProps) {
               opacity: isCursorInSection ? 1 : 0,
             }}
             transition={{ duration: 0.5 }}
+            style={{
+              backgroundImage:
+                "linear-gradient(to right, rgba(251,146,60,0.05), rgba(168,85,247,0.05))",
+            }}
           />
         </motion.div>
 
@@ -161,12 +166,12 @@ export default function SkillShowcase({ skills }: SkillShowcaseProps) {
           transition={{
             type: "spring",
             stiffness: 100,
-            damping: 30
+            damping: 30,
           }}
           style={{
             background: isDark
-              ? 'radial-gradient(circle, rgba(168,85,247,0.4) 0%, rgba(99,102,241,0.2) 50%, transparent 70%)'
-              : 'radial-gradient(circle, rgba(251,146,60,0.4) 0%, rgba(249,115,22,0.2) 50%, transparent 70%)',
+              ? "radial-gradient(circle, rgba(168,85,247,0.4) 0%, rgba(99,102,241,0.2) 50%, transparent 70%)"
+              : "radial-gradient(circle, rgba(251,146,60,0.4) 0%, rgba(249,115,22,0.2) 50%, transparent 70%)",
           }}
         />
 
@@ -174,20 +179,31 @@ export default function SkillShowcase({ skills }: SkillShowcaseProps) {
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
-            className={`absolute w-1 h-1 rounded-full ${isDark ? 'bg-purple-400/40' : 'bg-orange-400/40'
-              }`}
+            className={`absolute w-1 h-1 rounded-full ${
+              isDark ? "bg-purple-400/40" : "bg-orange-400/40"
+            }`}
             initial={{
-              x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1200),
-              y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
+              x:
+                Math.random() *
+                (typeof window !== "undefined" ? window.innerWidth : 1200),
+              y:
+                Math.random() *
+                (typeof window !== "undefined" ? window.innerHeight : 800),
             }}
             animate={{
-              x: mousePosition.x * (isCursorInSection ? 0.03 : 0.02) + (Math.random() * 40 - 20),
-              y: mousePosition.y * (isCursorInSection ? 0.03 : 0.02) + (Math.random() * 40 - 20),
+              x:
+                mousePosition.x * (isCursorInSection ? 0.03 : 0.02) +
+                (Math.random() * 40 - 20),
+              y:
+                mousePosition.y * (isCursorInSection ? 0.03 : 0.02) +
+                (Math.random() * 40 - 20),
               opacity: isCursorInSection ? [0.5, 1, 0.5] : [0.3, 0.8, 0.3],
               scale: isCursorInSection ? 1.5 : 1,
             }}
             transition={{
-              duration: isCursorInSection ? 2 + Math.random() : 3 + Math.random() * 2,
+              duration: isCursorInSection
+                ? 2 + Math.random()
+                : 3 + Math.random() * 2,
               repeat: Infinity,
               delay: Math.random() * 2,
             }}
@@ -211,7 +227,9 @@ export default function SkillShowcase({ skills }: SkillShowcaseProps) {
                 repeatDelay: 1,
               }}
               style={{
-                borderColor: isDark ? 'rgba(168,85,247,0.5)' : 'rgba(251,146,60,0.5)',
+                borderColor: isDark
+                  ? "rgba(168,85,247,0.5)"
+                  : "rgba(251,146,60,0.5)",
               }}
             />
             <motion.div
@@ -228,7 +246,9 @@ export default function SkillShowcase({ skills }: SkillShowcaseProps) {
                 repeatDelay: 2,
               }}
               style={{
-                borderColor: isDark ? 'rgba(99,102,241,0.5)' : 'rgba(249,115,22,0.5)',
+                borderColor: isDark
+                  ? "rgba(99,102,241,0.5)"
+                  : "rgba(249,115,22,0.5)",
               }}
             />
           </>
@@ -240,9 +260,9 @@ export default function SkillShowcase({ skills }: SkillShowcaseProps) {
           animate={{
             background: isCursorInSection
               ? isDark
-                ? 'radial-gradient(ellipse at center, rgba(168,85,247,0.05) 0%, transparent 50%)'
-                : 'radial-gradient(ellipse at center, rgba(251,146,60,0.05) 0%, transparent 50%)'
-              : 'transparent',
+                ? "radial-gradient(ellipse at center, rgba(168,85,247,0.05) 0%, transparent 50%)"
+                : "radial-gradient(ellipse at center, rgba(251,146,60,0.05) 0%, transparent 50%)"
+              : "transparent",
           }}
           transition={{ duration: 0.5 }}
         />
@@ -252,7 +272,9 @@ export default function SkillShowcase({ skills }: SkillShowcaseProps) {
         {/* Header */}
         <motion.div className="flex justify-between">
           <HighlightText firstText="My" orangeText=" Skills" size="4xl" />
-          <p className={`${subTextColor} mt-4`}>The digital toolbox that powers my creativity and problem-solving.</p>
+          <p className={`${subTextColor} mt-4`}>
+            The digital toolbox that powers my creativity and problem-solving.
+          </p>
         </motion.div>
 
         {/* Circular Skill Showcase */}
@@ -269,18 +291,22 @@ export default function SkillShowcase({ skills }: SkillShowcaseProps) {
             <motion.div
               className="absolute inset-0 m-auto w-32 h-32 rounded-full backdrop-blur-sm border-2 shadow-lg flex items-center justify-center cursor-pointer z-20"
               style={{
-                background: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)',
-                borderColor: isDark ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.2)',
+                background: isDark
+                  ? "rgba(255,255,255,0.05)"
+                  : "rgba(0,0,0,0.05)",
+                borderColor: isDark
+                  ? "rgba(255,255,255,0.2)"
+                  : "rgba(0,0,0,0.2)",
               }}
               animate={{
-                scale: isHovered ? 1.1 : 1
+                scale: isHovered ? 1.1 : 1,
               }}
               transition={{
-                scale: { type: "spring", stiffness: 300 }
+                scale: { type: "spring", stiffness: 300 },
               }}
               whileHover={{
                 scale: 1.2,
-                transition: { type: "spring", stiffness: 300 }
+                transition: { type: "spring", stiffness: 300 },
               }}
             >
               <div className="text-xs font-medium text-center">
@@ -315,8 +341,12 @@ export default function SkillShowcase({ skills }: SkillShowcaseProps) {
                   <motion.div
                     className="w-20 h-20 rounded-2xl backdrop-blur-sm border shadow-lg flex flex-col items-center justify-center cursor-pointer group relative"
                     style={{
-                      background: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.9)',
-                      borderColor: isDark ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.1)',
+                      background: isDark
+                        ? "rgba(255,255,255,0.08)"
+                        : "rgba(255,255,255,0.9)",
+                      borderColor: isDark
+                        ? "rgba(255,255,255,0.15)"
+                        : "rgba(0,0,0,0.1)",
                     }}
                     whileHover={{
                       scale: 1.3,
@@ -325,7 +355,7 @@ export default function SkillShowcase({ skills }: SkillShowcaseProps) {
                       transition: {
                         type: "spring",
                         stiffness: 400,
-                        damping: 15
+                        damping: 15,
                       },
                     }}
                     animate={{
@@ -356,7 +386,7 @@ export default function SkillShowcase({ skills }: SkillShowcaseProps) {
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{
                         opacity: isHovered ? 1 : 0,
-                        scale: isHovered ? 1 : 0.8
+                        scale: isHovered ? 1 : 0.8,
                       }}
                       transition={{ duration: 0.2 }}
                     >
@@ -368,7 +398,7 @@ export default function SkillShowcase({ skills }: SkillShowcaseProps) {
                       initial={{ scale: 1, opacity: 0 }}
                       animate={{
                         scale: isHovered ? 1.3 : 1,
-                        opacity: isHovered ? 0.4 : 0
+                        opacity: isHovered ? 0.4 : 0,
                       }}
                       transition={{ duration: 0.3 }}
                     />
@@ -381,7 +411,10 @@ export default function SkillShowcase({ skills }: SkillShowcaseProps) {
             {remainingSkills.map((skill, index) => {
               const absoluteIndex = index + 8;
               const normalPosition = remainingSkillsNormal[index];
-              const randomPosition = randomPositions[absoluteIndex] || { x: 0, y: 0 };
+              const randomPosition = randomPositions[absoluteIndex] || {
+                x: 0,
+                y: 0,
+              };
 
               return (
                 <motion.div
@@ -396,7 +429,7 @@ export default function SkillShowcase({ skills }: SkillShowcaseProps) {
                   }}
                   transition={{
                     duration: 0.5,
-                    delay: isHovered ? (index * 0.02) + 0.2 : 0,
+                    delay: isHovered ? index * 0.02 + 0.2 : 0,
                     type: "spring",
                     stiffness: 200,
                     damping: 25,
@@ -405,8 +438,12 @@ export default function SkillShowcase({ skills }: SkillShowcaseProps) {
                   <motion.div
                     className="w-16 h-16 rounded-xl backdrop-blur-sm border shadow-md flex flex-col items-center justify-center cursor-pointer group relative"
                     style={{
-                      background: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(255,255,255,0.8)',
-                      borderColor: isDark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.1)',
+                      background: isDark
+                        ? "rgba(255,255,255,0.06)"
+                        : "rgba(255,255,255,0.8)",
+                      borderColor: isDark
+                        ? "rgba(255,255,255,0.12)"
+                        : "rgba(0,0,0,0.1)",
                     }}
                     whileHover={{
                       scale: 1.2,
@@ -415,7 +452,7 @@ export default function SkillShowcase({ skills }: SkillShowcaseProps) {
                       transition: {
                         type: "spring",
                         stiffness: 400,
-                        damping: 15
+                        damping: 15,
                       },
                     }}
                     animate={{
@@ -446,7 +483,7 @@ export default function SkillShowcase({ skills }: SkillShowcaseProps) {
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{
                         opacity: isHovered ? 1 : 0,
-                        scale: isHovered ? 1 : 0.8
+                        scale: isHovered ? 1 : 0.8,
                       }}
                       transition={{ duration: 0.2 }}
                     >
@@ -458,7 +495,7 @@ export default function SkillShowcase({ skills }: SkillShowcaseProps) {
                       initial={{ scale: 1, opacity: 0 }}
                       animate={{
                         scale: isHovered ? 1.2 : 1,
-                        opacity: isHovered ? 0.3 : 0
+                        opacity: isHovered ? 0.3 : 0,
                       }}
                       transition={{ duration: 0.3 }}
                     />
@@ -474,7 +511,9 @@ export default function SkillShowcase({ skills }: SkillShowcaseProps) {
               animate={{ opacity: isHovered ? 0 : 1 }}
               transition={{ duration: 0.3 }}
             >
-              <div className={`text-sm ${subTextColor} flex items-center gap-2`}>
+              <div
+                className={`text-sm ${subTextColor} flex items-center gap-2`}
+              >
                 <span>Hover to explore all {skills.length} skills</span>
                 <motion.div
                   animate={{ x: [0, 5, 0] }}
@@ -506,8 +545,12 @@ export default function SkillShowcase({ skills }: SkillShowcaseProps) {
                   <div
                     className="w-16 h-16 rounded-xl backdrop-blur-sm border shadow-md flex items-center justify-center mb-3"
                     style={{
-                      background: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(255,255,255,0.8)',
-                      borderColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)',
+                      background: isDark
+                        ? "rgba(255,255,255,0.05)"
+                        : "rgba(255,255,255,0.8)",
+                      borderColor: isDark
+                        ? "rgba(255,255,255,0.1)"
+                        : "rgba(0,0,0,0.1)",
                     }}
                   >
                     <Image
